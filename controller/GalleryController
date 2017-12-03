@@ -1,0 +1,30 @@
+const galleryView = require('../view/GalleryView');
+const galleryModel = require('../model/GalleryModel');
+const singleGalleryView = require('../view/SingleGalleryView');
+
+function handleGetAllGalleries(request, response)
+{
+    function sendResponse(galleries)
+    {
+        response.send(galleryView.render(galleries));
+    }
+
+    galleryModel.getGalleries(sendResponse);
+}
+
+function handleGetSingleGallery(request, response)
+{
+    const galleryKey = request.params.galleryKey;
+
+    function sendResponse(gallery)
+    {
+        response.send(singleGalleryView.render(gallery));
+    }
+
+    galleryModel.getGallery(galleryKey, sendResponse);
+}
+
+module.exports = {
+    getAllGalleries : handleGetAllGalleries,
+    getSingleGallery : handleGetSingleGallery
+};

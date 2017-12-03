@@ -1,0 +1,7 @@
+<h1>Warenkorb</h1>
+<p>Anzahl Bilder: {{shoppingCart.itemCount}}</p>
+<div class="clearfix">
+    {{#each shoppingCart.images}}
+        {{>imgThumb}}
+    {{/each}}
+</div>
